@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Initial state and all 38 palette entries",
+    "ok": true
+  },
+  {
+    "name": "Manual skin and hair remain independent; clear and undo",
+    "ok": true
+  },
+  {
+    "name": "Minimum manual radius produces a valid uniform sample",
+    "ok": true
+  },
+  {
+    "name": "Duplicate samples do not inflate confidence",
+    "ok": true
+  },
+  {
+    "name": "24 zones limit, separate caps, undo frees capacity",
+    "ok": true
+  },
+  {
+    "name": "Hair suggestions excluded until confirmed",
+    "ok": true
+  },
+  {
+    "name": "Network failure permits manual analysis",
+    "ok": true
+  },
+  {
+    "name": "Corrupt and unsupported uploads preserve previous result",
+    "ok": true
+  },
+  {
+    "name": "Transparent and white samples yield no color; dark hair retained",
+    "ok": true
+  },
+  {
+    "name": "Extreme aspect ratio never creates zero-sized canvas",
+    "ok": true
+  },
+  {
+    "name": "Changing target during image decode cannot cancel upload",
+    "ok": true
+  },
+  {
+    "name": "Manual action cancels stale detection",
+    "ok": true
+  },
+  {
+    "name": "Keyboard cursor follows last pointer location",
+    "ok": true
+  },
+  {
+    "name": "320px mobile and 200% font size have no horizontal overflow",
+    "ok": true
+  },
+  {
+    "name": "All 38 exact palette colors classified through browser canvas",
+    "ok": true
+  },
+  {
+    "name": "JPEG, WebP, drag-and-drop and same file twice",
+    "ok": true
+  },
+  {
+    "name": "Oversized file rejected without replacing photo",
+    "ok": true
+  },
+  {
+    "name": "Newest image wins overlapping asynchronous decodes",
+    "ok": true
+  },
+  {
+    "name": "Largest of multiple faces is selected with warning",
+    "ok": true
+  },
+  {
+    "name": "No-face retry removes stale automatic zones",
+    "ok": true
+  },
+  {
+    "name": "Detector import can retry after a transient download failure",
+    "ok": true
+  },
+  {
+    "name": "Rendered image keeps aspect ratio for wide and tall photos",
+    "ok": true
+  },
+  {
+    "name": "Longest hair label fits inside result at 320px",
+    "ok": true
+  },
+  {
+    "name": "No photo bytes sent over network",
+    "ok": true
+  },
+  {
+    "name": "Detector timeout releases controls and enables manual fallback",
+    "ok": true
+  },
+  {
+    "name": "Keyboard boundary navigation does not throw; sample warnings remain usable",
+    "ok": true
+  },
+  {
+    "name": "200% page zoom preserves usable controls and results",
+    "ok": true
+  },
+  {
+    "name": "Changing hair height invalidates confirmation and preserves skin",
+    "ok": true
+  },
+  {
+    "name": "Drag existing sample changes location without adding duplicates",
+    "ok": true
+  },
+  {
+    "name": "Disagreeing skin samples expose lighting variation and low confidence",
+    "ok": true
+  }
+]
