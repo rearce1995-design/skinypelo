@@ -1,5 +1,7 @@
 # Validación · 2 de octubre de 2026
 
+**Actualización:** consulta `AUDITORIA.md` para la auditoría intensiva posterior, siete correcciones y pruebas de regresión. Los resultados de foto documentados aquí se mantienen tras los cambios.
+
 ## Ampliación de pelo
 
 Probada con la misma foto original. Se inspeccionaron visualmente las tres propuestas violetas antes de confirmarlas. Resultado:

@@ -1,5 +1,13 @@
 # Skin Tone Lab
 
+## Versión revisada tras pruebas intensivas
+
+Consulta `AUDITORIA.md` para los errores encontrados, sus correcciones y el alcance de las pruebas. Los puntos manuales del mismo tipo no pueden solaparse: evita contar repetidamente los mismos píxeles y aumentar artificialmente la confianza. El radio mínimo es ahora 3 px. La navegación de teclado continúa desde el último clic.
+
+La carga de archivos y la detección se cancelan de forma independiente. Una imagen nueva sustituye a una carga anterior pendiente; cambiar el selector no pierde la foto durante la carga. Se conservan dimensiones mínimas de 1 px al reducir imágenes muy estrechas. Los controles de análisis quedan desactivados durante la decodificación.
+
+Si un reintento no encuentra caras, se eliminan las zonas automáticas anteriores y se conservan las manuales. El detector puede reintentar una descarga fallida sin recargar toda la página. Los temporizadores de detección se liberan al finalizar.
+
 ## Actualización: Hair Color
 
 La web incluye los 20 Skin Tones y los 18 Hair Colors proporcionados, con resultados independientes, Top 3, ΔE2000 y confianza heurística para cada uno.
