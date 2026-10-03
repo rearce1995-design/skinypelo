@@ -1,5 +1,16 @@
 # Skin Tone Lab
 
+## Ajuste de muestras e iluminación — versión más reciente
+
+- Las propuestas de pelo se colocan más arriba: a 0,32 de la altura facial por encima del landmark superior, en lugar de 0,14. **Sigue siendo una aproximación geométrica**, no segmentación de pelo. El deslizador «Altura de las muestras de pelo» permite ajustar entre 0,14 y 0,60 según el peinado y encuadre. Al moverlo, las propuestas automáticas vuelven a requerir confirmación. Se conservan los puntos manuales y se omiten propuestas fuera de imagen o solapadas con ellos.
+- En modo manual, selecciona Piel o Pelo y **arrastra un círculo** para recolocarlo. No se añade una muestra duplicada. Al mover una propuesta de pelo se considera una elección manual confirmada. Puedes usar Limpiar selección y volver a marcar si necesitas cambiar el radio.
+- Si las muestras de piel discrepan más de ΔE2000 6 respecto a su mediana, aparece una comparación por zona y la confianza queda limitada a 44/100 (baja). El resultado se etiqueta como coincidencia **en esta foto**. El rango mostrado corresponde a las coincidencias por zona, no a un intervalo estadístico ni al tono real calibrado.
+- No se oscurece artificialmente la piel para ajustarla a una impresión visual; el cálculo continúa comparando el color medido. La piel a la sombra y la iluminada pueden coincidir con tonos distintos.
+
+Prueba real adicional con la foto de 800 × 589 enviada por el usuario: antes el pelo salía Dark Brown Hair 2 porque las propuestas caían en la línea del cabello y contenían piel; ahora las tres coinciden con **Black Hair 3**, ΔE combinado 1,26, confianza 66/100. Las zonas de piel dan **14 / 14 / 16**: la mediana sigue en Tone 14, ΔE 2,74, pero la confianza baja de 63 a 44 y se muestra claramente la discrepancia. Esto no determina el tono intrínseco de la persona.
+
+Regresión: **30/30 escenarios en Chrome y 30/30 en Edge**, incluidas recolocación, cambio de altura e iluminación desigual; las pruebas matemáticas siguen pasando. La foto original anterior conserva Black Hair 2 como primera coincidencia, ahora con confianza 44/100 tras la nueva posición. Las fotos no se incluyen en el ZIP.
+
 ## Versión revisada tras pruebas intensivas
 
 Consulta `AUDITORIA.md` para los errores encontrados, sus correcciones y el alcance de las pruebas. Los puntos manuales del mismo tipo no pueden solaparse: evita contar repetidamente los mismos píxeles y aumentar artificialmente la confianza. El radio mínimo es ahora 3 px. La navegación de teclado continúa desde el último clic.

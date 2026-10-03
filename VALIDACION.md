@@ -1,5 +1,7 @@
 # Validación · 2 de octubre de 2026
 
+**Última revisión de muestreo:** consulta el inicio de `README.md` para la segunda foto, el nuevo ajuste de altura del pelo, puntos arrastrables y discrepancia de iluminación. Los resultados históricos de pelo indicados abajo usaban la posición anterior; con la nueva altura, la primera foto sigue dando Black Hair 2 pero con confianza 44/100. La suite actual pasa 30/30 pruebas en cada uno de Chrome y Edge.
+
 **Actualización:** consulta `AUDITORIA.md` para la auditoría intensiva posterior, siete correcciones y pruebas de regresión. Los resultados de foto documentados aquí se mantienen tras los cambios.
 
 ## Ampliación de pelo
