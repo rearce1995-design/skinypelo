@@ -23,9 +23,11 @@ export function deltaE(a,b){
  return Math.sqrt((dl/sl)**2+(dc/sc)**2+(dH/sh)**2+rt*(dc/sc)*(dH/sh));
 }
 export const palette=HEX.map((hex,i)=>{const rgb=hex.match(/../g).map(v=>parseInt(v,16));return {id:i+1,hex:'#'+hex,rgb,lab:rgbToLab(rgb)};});
-export const rank=lab=>palette.map(p=>({...p,distance:deltaE(lab,p.lab)})).sort((a,b)=>a.distance-b.distance);
-export function summarize(pixels){
- const usable=pixels.filter(p=>p[3]>240 && Math.min(...p.slice(0,3))<250 && Math.max(...p.slice(0,3))>8).map(p=>rgbToLab(p.slice(0,3))).sort((a,b)=>a[0]-b[0]);
+export const hairPalette=[['Blonde Hair 1','eeeeee'],['Blonde Hair 2','e7dd82'],['Blonde Hair 3','f0d9ae'],['Light Brown Hair 1','dbcc8f'],['Light Brown Hair 2','dbbe92'],['Light Brown Hair 3','bd9870'],['Dark Brown Hair 1','8b7261'],['Dark Brown Hair 2','523f2f'],['Dark Brown Hair 3','33251b'],['Red Hair 1','d36023'],['Red Hair 2','c42c15'],['Red Hair 3','b1652f'],['Black Hair 1','2c2d2f'],['Black Hair 2','1f1b17'],['Black Hair 3','020306'],['Grey Hair 1','b0adae'],['Grey Hair 2','8a8889'],['Grey Hair 3','605f5f']].map(([name,hex],i)=>{const rgb=hex.match(/../g).map(v=>parseInt(v,16));return {id:i+1,name,hex:'#'+hex,rgb,lab:rgbToLab(rgb)};});
+export const rank=(lab,colors=palette)=>colors.map(p=>({...p,distance:deltaE(lab,p.lab)})).sort((a,b)=>a.distance-b.distance);
+export function summarize(pixels,kind='skin'){
+ // Preserve very dark hair, including #020306; skin's black cutoff is unsuitable here.
+ const usable=pixels.filter(p=>p[3]>240 && Math.min(...p.slice(0,3))<250 && (kind==='hair'||Math.max(...p.slice(0,3))>8)).map(p=>rgbToLab(p.slice(0,3))).sort((a,b)=>a[0]-b[0]);
  if(usable.length<16)return null;
  const trimmed=usable.slice(Math.floor(usable.length*.25),Math.ceil(usable.length*.75));
  const center=[0,1,2].map(i=>median(trimmed.map(p=>p[i]))),dist=trimmed.map(p=>deltaE(p,center)),md=median(dist),mad=median(dist.map(d=>Math.abs(d-md)));

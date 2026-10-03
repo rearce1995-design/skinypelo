@@ -1,5 +1,17 @@
 # Skin Tone Lab
 
+## Actualización: Hair Color
+
+La web incluye los 20 Skin Tones y los 18 Hair Colors proporcionados, con resultados independientes, Top 3, ΔE2000 y confianza heurística para cada uno.
+
+Al detectar el rostro se proponen tres óvalos violetas por encima de la frente. **No es segmentación automática de cabello**: revisa los óvalos y pulsa **Confirmar zonas de pelo** solamente si todos están sobre pelo visible. Hasta confirmarlos no intervienen en el resultado. Si contienen fondo, un gorro o cuero cabelludo, elige **Pelo** en el selector, pulsa **Limpiar selección** y marca zonas manualmente. En personas sin pelo visible no debes confirmar las propuestas; deja el resultado sin muestras.
+
+El selector **Muestrear → Piel / Pelo** determina dónde se añaden puntos y qué grupo se limpia o deshace. Se admiten hasta 12 zonas por tipo. Cambiar de grupo conserva el otro resultado. Volver a detectar el rostro sustituye las zonas de ambos grupos; subir otra fotografía reinicia ambos análisis. Piel usa turquesa y pelo violeta, además de números en la imagen.
+
+El pelo usa la misma conversión LAB, recorte de luminancia y comparación CIEDE2000, pero conserva los píxeles oscuros: el filtro de piel excluiría erróneamente `Black Hair 3 #020306`. Se penalizan las muestras casi negras por falta de información de exposición. Reflejos, mechas, canas y tintes pueden hacer que un único color sea poco representativo. La confianza no verifica que la muestra sea cabello; debes comprobarlo visualmente.
+
+Se ha priorizado el hexadecimal de **Grey Hair 3 #605f5f**, equivalente a **R:96 G:95 B:95**, ante la discrepancia con el RGB 95/95/95 de la lista. Los demás colores coinciden con sus valores RGB. La paleta de pelo está en `hairPalette` dentro de `color.js`.
+
 Web estática en español para comparar el color de piel observado en una fotografía con los 20 Skin Tones proporcionados. HTML/CSS/JavaScript, sin backend, claves API ni compilación.
 
 ## Publicar en GitHub Pages

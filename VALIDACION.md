@@ -1,5 +1,21 @@
 # Validación · 2 de octubre de 2026
 
+## Ampliación de pelo
+
+Probada con la misma foto original. Se inspeccionaron visualmente las tres propuestas violetas antes de confirmarlas. Resultado:
+
+| Orden | Hair Color | ΔE2000 |
+|---|---|---|
+| 1 | Black Hair 2 · #1f1b17 | 3,38 |
+| 2 | Black Hair 3 · #020306 | 4,08 |
+| 3 | Black Hair 1 · #2c2d2f | 8,25 |
+
+Confianza heurística **52/100 (media)**, con avisos de escaso detalle y proximidad entre los dos primeros candidatos. LAB 6,3 / 0,0 / 1,3; 55 píxeles retenidos entre las tres zonas. El resultado de piel se mantuvo en Skin Tone 12, con 35/100.
+
+Comprobado en navegador: propuestas pendientes no generan resultado hasta confirmarlas; análisis de piel conservado al confirmar pelo, añadir pelo manualmente, limpiar pelo y deshacer; muestreo de pelo con teclado cuando el detector está bloqueado; vista móvil de 390 px sin desbordamiento horizontal; sin excepciones JavaScript. Capturas de escritorio y móvil revisadas.
+
+Pruebas matemáticas adicionales: los 18 Hair Colors se reconocen a sí mismos después de filtrar; `#020306` se conserva en pelo y continúa excluyéndose del filtro de piel; Grey Hair 3 usa RGB 96/95/95 según el hexadecimal solicitado. Las pruebas previas de piel y CIEDE2000 siguen pasando.
+
 ## Foto de la conversación original
 
 Probada la imagen original recuperada de «Saludo inicial» (399 × 501 px) con Microsoft Edge/Chromium, MediaPipe CPU y la aplicación servida por HTTP local.
