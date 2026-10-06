@@ -118,5 +118,17 @@
   {
     "name": "Disagreeing skin samples expose lighting variation and low confidence",
     "ok": true
+  },
+  {
+    "name": "Mixed dark and light hair is inconclusive instead of assigning black",
+    "ok": true
+  },
+  {
+    "name": "Image zoom retains sampling coordinates and resets on new upload",
+    "ok": true
+  },
+  {
+    "name": "Too few hair pixels cannot claim a reliable black assignment",
+    "ok": true
   }
 ]

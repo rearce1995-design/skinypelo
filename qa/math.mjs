@@ -42,3 +42,8 @@ for(let i=0;i<10000;i++){const a=rgbToLab(Array.from({length:3},()=>Math.floor(r
 for(const [colors,kind] of [[palette,'skin'],[hairPalette,'hair']])for(const p of colors){const pixels=Array.from({length:400},()=>[...p.rgb.map(v=>Math.max(0,Math.min(255,v+Math.floor(random()*5)-2))),255]);pixels.push(...Array(50).fill([255,255,255,255]),...Array(50).fill([0,0,0,0]));const result=summarize(pixels,kind);assert.ok(result);assert.equal(rank(result.lab,colors)[0].id,p.id);}
 for(const kind of ['skin','hair']){assert.equal(summarize([],kind),null);assert.equal(summarize(Array(15).fill([100,80,60,255]),kind),null);assert.ok(summarize(Array(16).fill([100,80,60,255]),kind));}
 console.log('PASS: 34 published CIEDE2000 pairs; 10,000 deterministic color pairs; 38 noisy swatches; sample size boundaries.');
+const varied=summarize([...Array(60).fill([44,45,47,255]),...Array(40).fill([189,152,112,255])],'hair');
+assert.equal(rank(varied.darkLab,hairPalette)[0].name,'Black Hair 1');
+assert.equal(rank(varied.lightLab,hairPalette)[0].name,'Light Brown Hair 3');
+assert.ok(deltaE(varied.darkLab,varied.lightLab)>8);
+console.log('PASS: tonal bands retain lighter strands excluded from the central median.');
