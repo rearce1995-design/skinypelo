@@ -1,5 +1,7 @@
 # Auditoría general · 2 de octubre de 2026
 
+**Revisión más reciente:** la foto de un jugador de espaldas expuso una limitación del método de colorimetría, no un fallo aritmético: sombras sobre pelo claro pueden coincidir con referencias negras. Se añadió comparación de bandas claras/oscuras, abstención ante evidencia débil y ampliación de imagen. Consulta el comienzo del README para el diagnóstico real y sus límites. Las cifras y afirmaciones de resultados de versiones anteriores de este documento son históricas; los JSON de `qa/` corresponden a la suite actual.
+
 **Actualización posterior con una segunda foto:** las pruebas funcionales previas no detectaban si las propuestas geométricas incluían piel en la línea del pelo. Se reprodujo ese error de muestreo real y se desplazaron las propuestas hacia arriba, con altura ajustable y círculos arrastrables. Se reforzó la advertencia y la confianza baja ante iluminación desigual de la piel. La suite actual pasa **30/30 en Edge y 30/30 en Chrome**, frente a los 27 originales descritos abajo. Los detalles y mediciones nuevas están al principio del README. Las cifras de la foto original en este informe corresponden a la versión auditada antes de este ajuste.
 
 Se probaron cálculos, entradas inválidas, estado de interfaz, concurrencia, separación de piel/pelo, recuperación de red, teclado, tamaños de pantalla y despliegue bajo un subdirectorio. Se corrigieron siete bugs reproducidos con pruebas que fallaban antes del cambio.

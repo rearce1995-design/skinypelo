@@ -34,6 +34,7 @@ export function summarize(pixels,kind='skin'){
  const kept=trimmed.filter((p,i)=>dist[i]<=md+Math.max(2,3*mad));
  if(kept.length<8)return null;
  const lab=[0,1,2].map(i=>median(kept.map(p=>p[i])));
- return {lab,count:kept.length,raw:pixels.length,clipped:1-usable.length/pixels.length,spread:median(kept.map(p=>deltaE(p,lab))),lightRange:usable[Math.floor(usable.length*.9)][0]-usable[Math.floor(usable.length*.1)][0]};
+ const band=(lo,hi)=>{const group=usable.slice(Math.floor(usable.length*lo),Math.max(Math.floor(usable.length*lo)+1,Math.ceil(usable.length*hi)));return [0,1,2].map(i=>median(group.map(p=>p[i])));};
+ return {lab,count:kept.length,raw:pixels.length,clipped:1-usable.length/pixels.length,spread:median(kept.map(p=>deltaE(p,lab))),lightRange:usable[Math.floor(usable.length*.9)][0]-usable[Math.floor(usable.length*.1)][0],darkLab:band(.1,.35),lightLab:band(.65,.9)};
 }
 

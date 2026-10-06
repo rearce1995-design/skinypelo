@@ -1,5 +1,33 @@
 # Skin Tone Lab
 
+## Pegar capturas desde Recortes — 6 de octubre de 2026
+
+Haz la captura con **Win + Mayús + S**, vuelve a la web, haz clic en ella y pulsa **Ctrl+V** (Cmd+V en macOS). La imagen del portapapeles se abre e inicia el mismo análisis que «Subir foto», sin guardarla previamente en un archivo. Puedes pegar otra captura para sustituir la anterior.
+
+Se aceptan PNG, JPG y WebP hasta 25 MB. Se usa la primera imagen compatible cuando el portapapeles contiene varias representaciones. Pegar texto no modifica la foto. La web sólo recibe la imagen cuando realizas la acción de pegar; no lee continuamente el portapapeles ni solicita permiso de lectura automática. La foto continúa procesándose localmente.
+
+Esta versión también incluye la separación de muestras de pelo ajustable y la distribución a distintas alturas introducidas en la revisión anterior. Son propuestas geométricas que debes comprobar visualmente.
+
+## Última revisión: pelo con sombras y poco detalle
+
+La aplicación **compara colores observados**, no reconoce semánticamente «rubio bajo sombra» ni recupera el color natural del pelo. Las pruebas de funcionamiento anteriores no demuestran esa capacidad. Una mediana oscura puede corresponder a sombra sobre pelo claro; una mediana poco saturada puede acercarse a los grises sin que haya canas.
+
+Ahora se muestra **Sin asignación fiable**, se limita la confianza a 44 y se evita resaltar un Hair Color definitivo si hay menos de 100 píxeles retenidos, ajuste de paleta ΔE > 8, discrepancia entre zonas > 6, o bandas clara/oscura separadas por ΔE > 8 que coinciden con colores distintos. Son umbrales heurísticos conservadores, no un detector validado de color natural. Las coincidencias de píxeles se conservan como información orientativa.
+
+Las bandas de luminosidad usan los percentiles 10–35 y 65–90 de los píxeles válidos de cada zona, antes del recorte central. Así se muestran diferencias que la mediana podía ocultar. No se interpreta automáticamente la banda clara como color real ni se fuerza un resultado rubio.
+
+**Ampliar imagen (1–4×)** permite elegir mechones pequeños con mayor precisión. Las coordenadas y el muestreo continúan referidos a los píxeles originales procesados; ampliar no aumenta la resolución ni los datos disponibles. Se reinicia al subir otra foto. Cuando hay zoom, puedes desplazar la vista para acceder a toda la imagen.
+
+### Foto del jugador de espaldas, 400 × 500
+
+Con MediaPipe real no se detectó rostro y no se generó una clasificación automática en la versión local. No se pudo reproducir la asignación automática «Black» relatada por el usuario; puede depender de las muestras o de la versión utilizada. Sí se reprodujeron coincidencias negras al muestrear las partes oscuras del cabello.
+
+Tres muestras manuales de radio 5 px centradas en (170,48), (180,62) y (167,78) produjeron diferencias claras: bandas oscuras cercanas a Black Hair 1 y claras a Dark Brown Hair 1. La mediana coincidía con Grey Hair 3, lo que **no implica pelo gris**. La salida revisada es «Sin asignación fiable», 35/100. La foto sugiere visualmente mechones claros/castaños, pero este comparador no permite establecer un rubio/castaño de la paleta de forma fiable con esos píxeles. Conviene una fotografía más cercana y con iluminación uniforme.
+
+Esta revisión reemplaza las expectativas de asignación en muestras pequeñas de las versiones documentadas más abajo. No incluye las fotos del usuario en la distribución.
+
+Verificación de esta revisión: 33/33 escenarios en Chrome y 33/33 en Edge; pasan las pruebas matemáticas y las bandas claras/oscuras. La ampliación no equivale a una validación en móviles físicos. Para desplazar la imagen con el dedo, desactiva temporalmente Muestreo manual; al activarlo los gestos sobre círculos recolocan las muestras.
+
 ## Ajuste de muestras e iluminación — versión más reciente
 
 - Las propuestas de pelo se colocan más arriba: a 0,32 de la altura facial por encima del landmark superior, en lugar de 0,14. **Sigue siendo una aproximación geométrica**, no segmentación de pelo. El deslizador «Altura de las muestras de pelo» permite ajustar entre 0,14 y 0,60 según el peinado y encuadre. Al moverlo, las propuestas automáticas vuelven a requerir confirmación. Se conservan los puntos manuales y se omiten propuestas fuera de imagen o solapadas con ellos.
